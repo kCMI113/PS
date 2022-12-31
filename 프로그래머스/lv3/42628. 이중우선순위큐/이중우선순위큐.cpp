@@ -2,11 +2,10 @@
 #include <vector>
 #include <algorithm>
 #include <deque>
-
 using namespace std;
 
 vector<int> solution(vector<string> operations) {
-    vector<int> answer;
+    vector<int> answer = {0,0};
     deque<int> que;
     string com;
     int data;
@@ -20,12 +19,6 @@ vector<int> solution(vector<string> operations) {
         else if(!que.empty() && data == 1)  que.pop_back();
         sort(que.begin(), que.end());
     }
-    if(que.empty()) {
-        answer.push_back(0);
-        answer.push_back(0);        
-    }else{
-        answer.push_back(que.back());
-        answer.push_back(que.front());
-    }
+    if(!que.empty()){ answer[0] = que.back(); answer[1] = que.front(); }
     return answer;
 }
