@@ -1,13 +1,10 @@
 # [level 2] 피보나치 수 - 12945 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12945) 
-
-### POINT
-나머지 연산의 성질 👉 (a+b)%n = (a%n + b%n)%n
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12945?language=python3) 
 
 ### 성능 요약
 
-메모리: 4.21 MB, 시간: 0.54 ms
+메모리: 13.7 MB, 시간: 24.00 ms
 
 ### 구분
 
