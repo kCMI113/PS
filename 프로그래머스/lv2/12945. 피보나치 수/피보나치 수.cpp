@@ -12,12 +12,11 @@ using namespace std;
 
 int solution(int n) {
     // int answer = fibo(n)%n_div;
-
-    vector<int> fibo(n+1,0);
-    fibo[1]=1;
+    vector<int> fibo;
     
-    for(int i=2; i<=n; i++){
-        fibo[i] = fibo[i-2]%n_div + fibo[i-1]%n_div;
+    for(int i=0; i<=n; i++){
+        if(i<2) fibo.push_back(i);
+        else fibo.push_back(fibo[i-2]%n_div + fibo[i-1]%n_div);
     }
     
     int answer = fibo[n]%n_div;
