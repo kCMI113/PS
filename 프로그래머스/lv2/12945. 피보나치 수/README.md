@@ -2,6 +2,9 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12945?language=cpp) 
 
+### POINT
+나머지 연산의 성질 👉 (a+b)%n = (a%n + b%n)%n
+
 ### 성능 요약
 
 메모리: 4.16 MB, 시간: 0.84 ms
