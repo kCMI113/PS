@@ -2,7 +2,7 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/82612?language=cpp) 
 
-###POINT
+### POINT
 - 오버플로우
 - n까지 정수 합이 N(N+1)/2 임을 이용하면 반복문 없이 풀 수 있음
 
