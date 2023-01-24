@@ -1,15 +1,11 @@
 def solution(n, lost, reserve):
-    answer = 0
-    for R in range(n+1):
-        if R in lost and R in reserve:
-            lost.remove(R)
-            reserve.remove(R)
-    reserve.sort()
-    lost.sort()
-    for R in reserve:
-        if R-1 in lost:
-            lost.remove(R-1)
-        elif R+1 in lost:
-            lost.remove(R+1)
-    answer = n - len(lost)
+    newres = set(reserve) - set(lost)
+    newlos = set(lost) - set(reserve)
+    newres = sorted(newres)
+    for R in newres:
+        if R-1 in newlos:
+            newlos.remove(R-1)
+        elif R+1 in newlos:
+            newlos.remove(R+1)
+    answer = n - len(newlos)
     return answer
