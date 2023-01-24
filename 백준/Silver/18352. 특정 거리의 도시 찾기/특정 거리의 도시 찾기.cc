@@ -1,53 +1,42 @@
-#include <bits/stdc++.h>
-
+#include<bits/stdc++.h>
 using namespace std;
 
-// 도시의 개수, 도로의 개수, 거리 정보, 출발 도시 번호
-int n, m, k, x;
-vector<int> graph[300001];
-// 모든 도시에 대한 최단 거리 초기화
-vector<int> d(300001, -1);
+int main(void){
+    int n,m,k,x;
+    cin>>n>>m>>k>>x;
 
-int main(void) {
-    cin >> n >> m >> k >> x;
+    vector<vector<int>> graph(n+1);
+    vector<int> dpeth(n+1,-1);
 
-    // 모든 도로 정보 입력 받기
-    for (int i = 0; i < m; i++) {
-        int a, b;
-        cin >> a >> b;
+    for(int i=0; i<m; i++){
+        int a,b;
+        cin>>a>>b;
         graph[a].push_back(b);
     }
+    // bfs
+    queue<int> Q;
+    vector<int> res;
+    Q.push(x);
+    dpeth[x] = 0;
 
-    // 출발 도시까지의 거리는 0으로 설정
-    d[x] = 0;
-
-    // 너비 우선 탐색(BFS) 수행
-    queue<int> q;
-    q.push(x);
-    while (!q.empty()) {
-        int now = q.front();
-        q.pop();
-        // 현재 도시에서 이동할 수 있는 모든 도시를 확인
-        for (int i = 0; i < graph[now].size(); i++) {
-            int nextNode = graph[now][i];
-            // 아직 방문하지 않은 도시라면
-            if (d[nextNode] == -1) {
-                // 최단 거리 갱신
-                d[nextNode] = d[now] + 1;
-                q.push(nextNode);
+    while(!Q.empty()){
+        int now = Q.front();
+        Q.pop();
+        for(auto node:graph[now]){
+            if(dpeth[node]==-1){
+                Q.push(node);
+                dpeth[node] = dpeth[now] + 1;
+                if(dpeth[node]== k) res.push_back(node);
             }
         }
     }
-
-    // 최단 거리가 K인 모든 도시의 번호를 오름차순으로 출력
+    
     bool check = false;
     for (int i = 1; i <= n; i++) {
-        if (d[i] == k) {
+        if (dpeth[i] == k) {
             cout << i << '\n';
             check = true;
         }
     }
-
-    // 만약 최단 거리가 K인 도시가 없다면, -1 출력
     if (!check) cout << -1 << '\n';
 }
