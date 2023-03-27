@@ -9,3 +9,4 @@ for i in range(len(km)):
     tot_cost += min_cost*km[i]
     
 print(tot_cost)
+
