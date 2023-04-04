@@ -12,7 +12,8 @@ max_len = 0
 
 while(start<=end):
     mid = (start+end)//2
-    new_n = sum(map(lambda num:num//mid, cable))
+    #new_n = sum(map(lambda num:num//mid, cable))
+    new_n = sum([num//mid for num in cable])
     if new_n >= n:
         max_len = mid
         start = mid + 1
