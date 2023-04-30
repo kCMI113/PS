@@ -2,31 +2,31 @@ import sys
 
 n = int(sys.stdin.readline())
 nums = [0]
-res = []
 out = []
+res = []
 itr = nums[-1]+1
 
 for i in range(n):
-    out.append(int(sys.stdin.readline()))
+    res.append(int(sys.stdin.readline()))
 
-out = list(reversed(out))
+res = list(reversed(res))
 
-while out:
-    query = out.pop()
+while res:
+    query = res.pop()
     if nums[-1] < query:
         for i in range(itr,query+1):
             nums.append(i)
-            res.append('+')
+            out.append('+')
         itr = nums[-1]+1
 
     if nums[-1] == query:
-        res.append('-')
+        out.append('-')
         nums.pop()
     else:
-        res.append('NO')
+        out.append('NO')
         break
-if 'NO' in res:
+if 'NO' in out:
     print('NO')
 else:
-    for r in res:
+    for r in out:
         print(r)
