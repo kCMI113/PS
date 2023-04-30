@@ -19,12 +19,13 @@ while res:
             out.append('+')
         itr = nums[-1]+1
 
-    if nums[-1] == query:
+    if nums[-1] >= query:
         out.append('-')
         nums.pop()
     else:
         out.append('NO')
         break
+    
 if 'NO' in out:
     print('NO')
 else:
