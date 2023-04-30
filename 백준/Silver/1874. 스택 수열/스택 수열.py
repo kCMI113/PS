@@ -1,5 +1,4 @@
 import sys
-import heapq
 
 n = int(sys.stdin.readline())
 nums = [0]
