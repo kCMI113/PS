@@ -7,7 +7,7 @@ visit = [0 for _ in range(N+1)]
 parents = [0 for _ in range(N+1)]
 
 for i in range(N-1):
-    fst, snd = list(map(int, sys.stdin.readline().split()))
+    fst, snd = map(int, sys.stdin.readline().split())
     nodes[fst].append(snd)
     nodes[snd].append(fst)
 
