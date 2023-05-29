@@ -13,8 +13,6 @@ for i in range(N-1):
 
 
 def dfs(i:int):
-    if visit[i]:
-        return
     visit[i] = 1
 
     for num in nodes[i]:
@@ -22,7 +20,6 @@ def dfs(i:int):
             parents[num] = i
             dfs(num)
 
-for i in range(1,N+1):
-    dfs(i)
+dfs(1)
 
 print(*parents[2:], sep='\n')
