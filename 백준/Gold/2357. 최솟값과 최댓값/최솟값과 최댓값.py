@@ -13,28 +13,21 @@ def init(nums, tree, node, start, end):
 
 def query(tree, node, start, end, left, right):
     # want to get total sum of [L,R] sub part
-    res = []
 
     if end < left or start > right:
-        return [-1, -1]
+        return [float('inf'), 0]
     elif left <= start and end <= right:
         return tree[node]
     
     L_res = query(tree, node*2, start, (start+end)//2, left, right)
     R_res = query(tree, node*2+1, (start+end)//2+1, end, left, right)
+    return [min(L_res[0], R_res[0]), max(L_res[1], R_res[1])]
 
-    if L_res[0]*R_res[0] < 0:
-        res.append(max(L_res[0], R_res[0]))
-    else:
-        res.append(min(L_res[0], R_res[0]))
-    
-    res.append(max(L_res[1], R_res[1]))
-    
-    return res
+
         
 N, M = map(int, sys.stdin.readline().split())
 nums = [int(sys.stdin.readline()) for _ in range(N)]
-tree = [0,0]*(4*N)
+tree = [[float('inf'),0]]*(4*N)
 
 # init tree
 init(nums, tree, 1, 0, N-1)
