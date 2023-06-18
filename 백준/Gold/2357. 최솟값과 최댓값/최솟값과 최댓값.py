@@ -31,7 +31,7 @@ def query(tree, node, start, end, left, right, oper):
         
 N, M = map(int, sys.stdin.readline().split())
 nums = [int(sys.stdin.readline()) for _ in range(N)]
-min_tree = [1e6]*(4*N)
+min_tree = [-1]*(4*N)
 max_tree = [-1]*(4*N)
 
 # init tree
