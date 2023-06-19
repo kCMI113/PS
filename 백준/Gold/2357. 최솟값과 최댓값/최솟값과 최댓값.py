@@ -15,7 +15,7 @@ def query(tree, node, start, end, left, right):
     # want to get total sum of [L,R] sub part
 
     if end < left or start > right:
-        return [1e9+1, 0]
+        return [1e9, 0]
     elif left <= start and end <= right:
         return tree[node]
     
@@ -25,7 +25,7 @@ def query(tree, node, start, end, left, right):
         
 N, M = map(int, sys.stdin.readline().split())
 nums = [int(sys.stdin.readline()) for _ in range(N)]
-tree = [[1e9+1,0]]*(4*N)
+tree = [[1e9,0]]*(4*N)
 
 # init tree
 init(nums, tree, 1, 0, N-1)
