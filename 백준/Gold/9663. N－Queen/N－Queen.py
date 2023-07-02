@@ -1,6 +1,6 @@
 import sys
 
-def find_q(row:int, N:int) -> int:
+def find_q(row:int) -> None:
     if row == N:
         global res
         res += 1
@@ -21,14 +21,14 @@ def find_q(row:int, N:int) -> int:
                 break
         
         if flag:
-            find_q(row+1, N)
+            find_q(row+1)
             check[i] = 0
-
+            
 N = int(input())
 check = [0 for _ in range(N)]
 board = [-1 for _ in range(N)]
 res = 0
-
-find_q(0, N)
+            
+find_q(0)
 
 print(res)
