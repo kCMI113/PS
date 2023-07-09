@@ -5,7 +5,7 @@ def calc(a:int, b:int, c:int, dp:list[list[list[int]]])->int:
         return dp[0][0][0]
     if max(a,b,c) >= 21:
         return calc(20,20,20,dp)
-    if dp[a][b][c] > 0:
+    if dp[a][b][c]:
         return dp[a][b][c]
     if a<b<c:
         dp[a][b][c] = calc(a,b,c-1,dp) + calc(a,b-1,c-1,dp) - calc(a,b-1,c,dp)
@@ -14,9 +14,8 @@ def calc(a:int, b:int, c:int, dp:list[list[list[int]]])->int:
 
     return dp[a][b][c]
 
-dp = [[[-1 for _ in range(21)] for _ in range(21)] for _ in range(21)] 
+dp = [[[0 for _ in range(21)] for _ in range(21)] for _ in range(21)] 
 dp[0][0][0] = 1
-
 
 while True:
     a,b,c = map(int,sys.stdin.readline().split())
