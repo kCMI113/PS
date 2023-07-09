@@ -1,6 +1,6 @@
 import sys
 
-def calc(a:int, b:int, c:int, dp:list[list[list[int]]]):
+def calc(a:int, b:int, c:int, dp:list[list[list[int]]])->int:
     if min(a,b,c) <= 0:
         return dp[0][0][0]
     if max(a,b,c) >= 21:
@@ -17,8 +17,8 @@ def calc(a:int, b:int, c:int, dp:list[list[list[int]]]):
 dp = [[[-1 for _ in range(21)] for _ in range(21)] for _ in range(21)] 
 dp[0][0][0] = 1
 
-a,b,c = list(map(int,sys.stdin.readline().split()))
+a,b,c = map(int,sys.stdin.readline().split())
 
 while set([a,b,c]) != set([-1]):
    print("w({}, {}, {}) = {}".format(a,b,c,calc(a,b,c,dp)))
-   a,b,c = list(map(int,sys.stdin.readline().split()))
+   a,b,c = map(int,sys.stdin.readline().split())
