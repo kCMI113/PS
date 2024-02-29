@@ -1,6 +1,6 @@
 def solution(friends, gifts):
     friend_dict = {v:k for k,v in enumerate(friends)}
-    gift_list = [[-1 for _ in range(len(friend_dict))] for _ in range(len(friend_dict))]
+    gift_list = [[0 for _ in range(len(friend_dict))] for _ in range(len(friend_dict))]
     gift_point = [0 for _ in range(len(friend_dict))]
     next_gift = [0 for _ in range(len(friend_dict))]
     
