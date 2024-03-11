@@ -6,8 +6,6 @@ def solution(survey, choices):
     type_score = [0 for _ in range(8)]
     
     for s, c in zip(survey,choices):
-        if c == 4:
-            continue
         if c < 4:
             type_score[type_list[s[0]]] += score_list[c-1]
         if c > 4:
