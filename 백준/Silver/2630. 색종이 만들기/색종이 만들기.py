@@ -1,16 +1,15 @@
 # https://www.acmicpc.net/problem/2630
 import sys
 
-N = int(sys.stdin.readline().rstrip())
-table = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(N)]
-blue = 0
-white = 0
-
 
 def devide(row, col, step):
-    global blue, white
-
+    global count
     flag = table[row][col]
+
+    if step == 1:
+        count[flag] += 1
+        return
+
     for i in range(row, row + step):
         for j in range(col, col + step):
             if table[i][j] != flag:
@@ -19,11 +18,12 @@ def devide(row, col, step):
                 devide(row, col + step // 2, step // 2)  # 우상
                 devide(row + step // 2, col + step // 2, step // 2)  # 우하
                 return
-    if flag:
-        blue += 1
-        return
-    white += 1
+
+    count[flag] += 1
 
 
+N = int(sys.stdin.readline())
+table = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+count = [0, 0]
 devide(0, 0, N)
-print(white, blue, sep="\n")
+print(count[0], count[1], sep="\n")
