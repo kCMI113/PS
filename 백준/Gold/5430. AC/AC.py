@@ -8,7 +8,7 @@ n_test = int(sys.stdin.readline().rstrip())
 for _ in range(n_test):
     is_reverse = False
     is_error = False
-    instructions = sys.stdin.readline().rstrip()
+    instructions = sys.stdin.readline().rstrip().replace("RR", "") # RR하면 그대로이므로 제거
     n_num = int(sys.stdin.readline().rstrip())
     vec = sys.stdin.readline().rstrip()[1:-1]
 
