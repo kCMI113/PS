@@ -3,18 +3,11 @@
 import sys
 
 n = int(sys.stdin.readline().rstrip())
-res = [[int(sys.stdin.readline().rstrip())]]
+prev_row = [int(sys.stdin.readline().rstrip())]
 
 for i in range(1, n):
-    line = list(map(int, sys.stdin.readline().rstrip().split()))
-    temp = []
-    for j in range(len(line)):
-        left, right = 0, 0
-        if j - 1 >= 0:
-            left = res[i - 1][j - 1]
-        if j < i:
-            right = res[i - 1][j]
-        temp.append(max(left, right) + line[j])
-    res.append(temp)
+    line = [*(map(int, sys.stdin.readline().rstrip().split()))]
+    mid_eles = [max(prev_row[j - 1], prev_row[j]) + line[j] for j in range(1, len(line) - 1)]  # 가운데 원소들
+    prev_row = [line[0] + prev_row[0], *mid_eles, line[-1] + prev_row[-1]]  # 왼쪽 끝, 가운데 원소들, 오른쪽 끝
 
-print(max(res[-1]))
+print(max(prev_row))
