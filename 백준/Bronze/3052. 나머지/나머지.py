@@ -1,6 +1,3 @@
 import sys
-res = {}
-for _ in range(10):
-	num = int(sys.stdin.readline())
-	res[num%42] = 1
-print(len(res.keys()))
+res = [int(sys.stdin.readline())%42 for _ in range(10)]
+print(len(set(res)))
