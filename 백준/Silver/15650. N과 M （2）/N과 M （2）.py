@@ -1,19 +1,18 @@
 N, M = map(int, input().split())
 
-res = set()
-nums = set()
+res = []
 
 
-def backtracking(nums):
-    if len(nums) == M:
-        res.add(" ".join(map(str, sorted(nums))))
+def backtracking(i):
+    if len(res) == M:
+        print(" ".join(map(str, res)))
+        return
 
-    for num in range(1, N + 1):
-        if num not in nums:
-            nums.add(num)
-            backtracking(nums)
-            nums.remove(num)
+    for num in range(i, N + 1):
+        if num not in res:
+            res.append(num)
+            backtracking(num + 1)
+            res.pop()
 
 
-backtracking(nums)
-print("\n".join(sorted(res)))
+backtracking(1)
